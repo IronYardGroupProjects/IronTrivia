@@ -31,6 +31,11 @@ input {
   input:focus {
     outline: none; }
 
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none; }
+
 .dashboard h1 {
   text-align: center;
   color: white;
@@ -50,6 +55,23 @@ input {
     font-size: 15px;
     padding: 10px 0 20px 0;
     border-bottom: 4px solid #2F3F40; }
+
+.game {
+  padding: 20px 0; }
+  .game input {
+    background: #2F3F40;
+    color: white;
+    transition: .2s all; }
+    .game input:focus {
+      padding: 20px;
+      font-size: 18px;
+      border-left: 3px solid #00D48A; }
+    .game input::-webkit-input-placeholder {
+      color: rgba(252, 253, 255, 0.5); }
+
+.question-view {
+  background: white;
+  margin-bottom: 20px; }
 
 .login h1 {
   text-align: center;
