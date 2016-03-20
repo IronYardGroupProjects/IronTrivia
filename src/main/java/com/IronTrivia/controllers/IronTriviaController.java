@@ -218,6 +218,10 @@ public class IronTriviaController {
         scores.save(score2);
         return score;
     }
+    @RequestMapping(path = "/score/{id}", method = RequestMethod.PUT)
+    public Score updateScorePut(@RequestBody Score score, HttpSession session) {
+        return updateScore(score, session);
+    }
     //
     /*returns all the scores for a game, could use to display the scores for a game
     *the score objects have a user object in them, so we don't need to request
