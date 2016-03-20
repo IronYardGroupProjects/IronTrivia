@@ -139,6 +139,8 @@ public class IronTriviaController {
             }
         }
         session.setAttribute("gameId", id);
+        user.setIsReady(false);
+        users.save(user);
         allReady = true;
         return allReady;//if a game object is returned then everyone is ready/has answered
     }
