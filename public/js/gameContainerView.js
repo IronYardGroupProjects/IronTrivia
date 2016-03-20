@@ -7,6 +7,8 @@ var GameCollection = require('./gameCollection');
 var GameCollectionView = require('./gameCollectionView');
 var QuestionModel = require('./questionModel');
 var QuestionView = require('./questionView');
+var AnswerModel = require('./answerModel');
+var AnswerView = require('./answerView');
 
 module.exports = Backbone.View.extend({
   activeUser: null,
@@ -19,6 +21,7 @@ module.exports = Backbone.View.extend({
     QModel.fetch().then((function(data){
       var QView = new QuestionView({model: QModel});
     }).bind(this));
+    var AView = new AnswerView();
   },
   render: function(){
     var markup = this.template();

@@ -1,7 +1,10 @@
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
-  urlRoot: 'http://jservice.io/api/random',
+  urlRoot: '/score',
   initialize: function(){
+
   }
 });
+
+//score obj score: , isCorrect: t/f 

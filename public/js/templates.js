@@ -8,7 +8,9 @@ module.exports = {
   ].join(""),
   question: [
       '<div class="col-sm-8">',
-        '<%=question%>',
+        '<h1><%=question%></h1>',
+        '<p><%=category.title%></p>',
+        '<p><%=value%></p>',
       '</div>',
   ].join(''),
   loginForm: [
@@ -72,5 +74,8 @@ module.exports = {
     '<div class="question-view row"></div>',
     '<div class="answer-view"></div>',
     '<div class="score-view"></div>'
+  ].join(''),
+  answerView: [
+    '<div>ThisWorks</div>'
   ].join('')
 };
