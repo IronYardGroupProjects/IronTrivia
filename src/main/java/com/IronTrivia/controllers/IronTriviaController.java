@@ -202,7 +202,7 @@ public class IronTriviaController {
     //
     /*when the scores are created in the create game method, the score is instantiated at 0
     * this route increments the score by 5 if the user answered correctly*/
-    @RequestMapping(path = "/score", method = RequestMethod.PUT)
+    @RequestMapping(path = "/score", method = RequestMethod.POST)
     public Score updateScore(@RequestBody Score score, HttpSession session) {
         Game game = games.findOne((Integer) session.getAttribute("gameId"));
         User user = users.findByUserName((String) session.getAttribute("userName"));
