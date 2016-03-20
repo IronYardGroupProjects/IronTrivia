@@ -52,10 +52,6 @@ public class Score {
         this.score = score;
     }
 
-    public void addToScore(int points) {
-        score += points;
-    }
-
     public User getUser() {
         return user;
     }
