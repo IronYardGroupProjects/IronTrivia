@@ -543,10 +543,12 @@ module.exports = {
     '</div>'
   ].join(""),
   question: [
-      '<div class="col-sm-8">',
+      '<div class="col-sm-12">',
         '<h1><%=question%></h1>',
-        '<p class="q-cat"><%=category.title%></p>',
-        '<p class="q-val"><%=value%></p>',
+        '<div class="q-details-wrap">',
+          '<p class="q-cat">category: <%=category.title%></p>',
+          '<p class="q-val">points: <%=value%></p>',
+        '</div>',
       '</div>',
   ].join(''),
   loginForm: [
