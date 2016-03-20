@@ -15,7 +15,7 @@ module.exports = Backbone.View.extend({
     this.model.destroy();
   },
   initialize: function(){
-    $('.game').html(this.render().el);
+    this.$el.append(this.render().el);
   },
   render: function(){
     var markup = this.template(this.model.toJSON()[0]);

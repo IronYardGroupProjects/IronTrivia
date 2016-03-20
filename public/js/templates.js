@@ -9,8 +9,8 @@ module.exports = {
   question: [
       '<div class="col-sm-8">',
         '<h1><%=question%></h1>',
-        '<p><%=category.title%></p>',
-        '<p><%=value%></p>',
+        '<p class="q-cat"><%=category.title%></p>',
+        '<p class="q-val"><%=value%></p>',
       '</div>',
   ].join(''),
   loginForm: [
@@ -70,12 +70,13 @@ module.exports = {
       '<button name="join-game">start game</button>',
     '</div>'
   ].join(''),
-  gameView: [
+  gameContainerView: [
     '<div class="question-view row"></div>',
-    '<div class="answer-view"></div>',
-    '<div class="score-view"></div>'
+    '<div class="answer-view row"></div>',
+    '<div class="score-view row"></div>'
   ].join(''),
   answerView: [
-    '<div>ThisWorks</div>'
+    '<input name="answer" type="text" placeholder="Answer">',
+    '<button name="submit-answer">Submit</button>'
   ].join('')
 };

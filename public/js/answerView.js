@@ -13,7 +13,20 @@ module.exports = Backbone.View.extend({
   },
   submitAnswer: function(event){
     event.preventDefault();
-    
+    var question = JSON.parse(sessionStorage.getItem('question'));
+    var answer = this.$el.find('input[name="answer"]').val();
+    if(answer === question[0].answer){
+      this.model.set({
+        score: question[0].value,
+        isCorrect: true
+      });
+      this.model.save();
+    } else {
+      this.model.set({
+        isCorrect: false
+      });
+      this.model.save();
+    }
   },
   initialize: function(){
     this.$el.append(this.render().el);

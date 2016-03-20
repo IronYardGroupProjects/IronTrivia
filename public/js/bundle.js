@@ -73,7 +73,20 @@ module.exports = Backbone.View.extend({
   },
   submitAnswer: function(event){
     event.preventDefault();
-    
+    var question = JSON.parse(sessionStorage.getItem('question'));
+    var answer = this.$el.find('input[name="answer"]').val();
+    if(answer === question[0].answer){
+      this.model.set({
+        score: question[0].value,
+        isCorrect: true
+      });
+      this.model.save();
+    } else {
+      this.model.set({
+        isCorrect: false
+      });
+      this.model.save();
+    }
   },
   initialize: function(){
     this.$el.append(this.render().el);
@@ -239,13 +252,14 @@ var AnswerView = require('./answerView');
 module.exports = Backbone.View.extend({
   activeUser: null,
   collection: null,
-  el: '.dashboard',
-  template: _.template(template.gameView),
+  el: '.game',
+  template: _.template(template.gameContainerView),
   initialize: function(){
     this.$el.append(this.render().el);
     var QModel = new QuestionModel();
     QModel.fetch().then((function(data){
       var QView = new QuestionView({model: QModel});
+      sessionStorage.setItem('question', JSON.stringify(data));
     }).bind(this));
     var AView = new AnswerView();
   },
@@ -447,7 +461,7 @@ module.exports = Backbone.View.extend({
     this.model.destroy();
   },
   initialize: function(){
-    $('.game').html(this.render().el);
+    this.$el.append(this.render().el);
   },
   render: function(){
     var markup = this.template(this.model.toJSON()[0]);
@@ -516,8 +530,8 @@ module.exports = {
   question: [
       '<div class="col-sm-8">',
         '<h1><%=question%></h1>',
-        '<p><%=category.title%></p>',
-        '<p><%=value%></p>',
+        '<p class="q-cat"><%=category.title%></p>',
+        '<p class="q-val"><%=value%></p>',
       '</div>',
   ].join(''),
   loginForm: [
@@ -577,13 +591,14 @@ module.exports = {
       '<button name="join-game">start game</button>',
     '</div>'
   ].join(''),
-  gameView: [
+  gameContainerView: [
     '<div class="question-view row"></div>',
-    '<div class="answer-view"></div>',
-    '<div class="score-view"></div>'
+    '<div class="answer-view row"></div>',
+    '<div class="score-view row"></div>'
   ].join(''),
   answerView: [
-    '<div>ThisWorks</div>'
+    '<input name="answer" type="text" placeholder="Answer">',
+    '<button name="submit-answer">Submit</button>'
   ].join('')
 };
 

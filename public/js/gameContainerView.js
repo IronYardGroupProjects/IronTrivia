@@ -13,13 +13,14 @@ var AnswerView = require('./answerView');
 module.exports = Backbone.View.extend({
   activeUser: null,
   collection: null,
-  el: '.dashboard',
-  template: _.template(template.gameView),
+  el: '.game',
+  template: _.template(template.gameContainerView),
   initialize: function(){
     this.$el.append(this.render().el);
     var QModel = new QuestionModel();
     QModel.fetch().then((function(data){
       var QView = new QuestionView({model: QModel});
+      sessionStorage.setItem('question', JSON.stringify(data));
     }).bind(this));
     var AView = new AnswerView();
   },
