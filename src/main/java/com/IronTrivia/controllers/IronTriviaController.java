@@ -139,6 +139,8 @@ public class IronTriviaController {
             }
         }
         session.setAttribute("gameId", id);
+        user.setIsReady(false);
+        users.save(user);
         allReady = true;
         return allReady;//if a game object is returned then everyone is ready/has answered
     }
@@ -209,7 +211,7 @@ public class IronTriviaController {
         game.setPlayerNames(getPlayers(game));
         Score score2 = scores.findByUserAndGame(user, game);
         if (score.getIsCorrect()) {
-            score2.addToScore(score.getScore());//adds 5 to the user's score for this game if they had the correct answer
+            score2.setScore(score2.getScore() + score.getScore());//adds 5 to the user's score for this game if they had the correct answer
         }
         user.setHasAnswered(false);
         users.save(user);

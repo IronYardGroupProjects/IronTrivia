@@ -63,6 +63,8 @@ var _ = require('underscore');
 var $ = require('jquery');
 var templates = require('./templates');
 var AnswerModel = require('./answerModel');
+var QuestionModel = require('./questionModel');
+var QuestionView = require('./questionView');
 
 module.exports = Backbone.View.extend({
   model: null,
@@ -75,18 +77,29 @@ module.exports = Backbone.View.extend({
     event.preventDefault();
     var question = JSON.parse(sessionStorage.getItem('question'));
     var answer = this.$el.find('input[name="answer"]').val();
-    if(answer === question[0].answer){
+    if(answer.toLowerCase() === question[0].answer.toLowerCase().trim()){
       this.model.set({
         score: question[0].value,
         isCorrect: true
       });
       this.model.save();
+      var QModel = new QuestionModel();
+      QModel.fetch().then((function(data){
+        var QView = new QuestionView({model: QModel});
+        sessionStorage.setItem('question', JSON.stringify(data));
+      }).bind(this));
     } else {
       this.model.set({
         isCorrect: false
       });
       this.model.save();
+      var QModel = new QuestionModel();
+      QModel.fetch().then((function(data){
+        var QView = new QuestionView({model: QModel});
+        sessionStorage.setItem('question', JSON.stringify(data));
+      }).bind(this));
     }
+    this.$el.find('input[name="answer"]').val('');
   },
   initialize: function(){
     this.$el.append(this.render().el);
@@ -100,7 +113,7 @@ module.exports = Backbone.View.extend({
 
 });
 
-},{"./answerModel":2,"./templates":19,"backbone":23,"jquery":24,"underscore":25}],4:[function(require,module,exports){
+},{"./answerModel":2,"./questionModel":16,"./questionView":17,"./templates":19,"backbone":23,"jquery":24,"underscore":25}],4:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
@@ -461,8 +474,10 @@ module.exports = Backbone.View.extend({
     this.model.destroy();
   },
   initialize: function(){
+    this.$el.html('');
     this.$el.append(this.render().el);
   },
+
   render: function(){
     var markup = this.template(this.model.toJSON()[0]);
     this.$el.append(markup);
