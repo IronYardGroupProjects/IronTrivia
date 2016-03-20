@@ -31,6 +31,11 @@ input {
   input:focus {
     outline: none; }
 
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none; }
+
 .dashboard h1 {
   text-align: center;
   color: white;
@@ -50,6 +55,30 @@ input {
     font-size: 15px;
     padding: 10px 0 20px 0;
     border-bottom: 4px solid #2F3F40; }
+
+.game {
+  padding: 20px 0; }
+  .game input {
+    background: #2F3F40;
+    color: white;
+    transition: .2s all; }
+    .game input:focus {
+      padding: 20px;
+      font-size: 18px;
+      border-left: 3px solid #00D48A; }
+    .game input::-webkit-input-placeholder {
+      color: rgba(252, 253, 255, 0.5); }
+
+.question-view {
+  background: white;
+  margin-bottom: 20px; }
+
+.question-view p {
+  margin: 0;
+  color: #ACBABB; }
+
+.q-details-wrap {
+  margin: 15px 0; }
 
 .login h1 {
   text-align: center;
@@ -74,24 +103,30 @@ input {
   padding: 20px;
   transition: .2s all; }
   .addUser input {
-    background: rgba(0, 131, 143, 0.15);
-    color: #00838F; }
+    background: rgba(174, 195, 188, 0.14);
+    color: #394748; }
     .addUser input::-webkit-input-placeholder {
       color: #90ACAF; }
 
 .addUser button {
-  background-color: #83CAD2; }
+  background-color: #00D48A;
+  color: #394748; }
   .addUser button:hover {
-    background: #4AA8B3; }
+    background: #00B576; }
 
-.addUserForm button:first-child {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  width: 100%;
-  margin-bottom: 15px; }
+.addUserForm {
+  margin-top: 20px; }
+  .addUserForm button:first-child {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15px;
+    color: white; }
+    .addUserForm button:first-child:hover {
+      color: #00D48A; }
 
 .add-game-container {
   margin-top: 5%; }

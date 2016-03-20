@@ -1,0 +1,27 @@
+.game {
+  padding: 20px 0;
+  input {
+      background: #2F3F40;
+      color: white;
+      transition: .2s all;
+      &:focus{
+        padding:20px;
+        font-size:18px;
+        border-left:3px solid #00D48A;
+      }
+      &::-webkit-input-placeholder{
+      color:rgba(252, 253, 255, 0.5);
+      }
+    }
+}
+.question-view {
+    background: white;
+    margin-bottom: 20px;
+}
+.question-view p {
+    margin: 0;
+    color: #ACBABB;
+}
+.q-details-wrap {
+    margin: 15px 0;
+}

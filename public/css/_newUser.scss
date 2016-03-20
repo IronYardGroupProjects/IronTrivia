@@ -3,22 +3,23 @@
   padding: 20px;
   transition:.2s all;
   input {
-    background: rgba(0, 131, 143, 0.15);
-    color:#00838F;
+    background: rgba(174, 195, 188, 0.14);
+    color:#394748;
     &::-webkit-input-placeholder {
     color: #90ACAF;
     }
   }
 }
 .addUser button {
-background-color: #83CAD2;
+background-color: #00D48A;
+color:#394748;
 &:hover{
-  background:#4AA8B3;
-}
+  background:#00B576;
+  }
 }
 .addUserForm {
+  margin-top:20px;
   button{
-
   &:first-child{
     background:none;
     border:none;
@@ -27,6 +28,10 @@ background-color: #83CAD2;
     text-align: center;
     width: 100%;
     margin-bottom: 15px;
+    color:white;
+    &:hover {
+      color: #00D48A;
+      }
     }
   }
 }

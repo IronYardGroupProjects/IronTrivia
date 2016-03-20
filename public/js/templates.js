@@ -7,10 +7,12 @@ module.exports = {
     '</div>'
   ].join(""),
   question: [
-      '<div class="col-sm-8">',
+      '<div class="col-sm-12">',
         '<h1><%=question%></h1>',
-        '<p class="q-cat"><%=category.title%></p>',
-        '<p class="q-val"><%=value%></p>',
+        '<div class="q-details-wrap">',
+          '<p class="q-cat">category: <%=category.title%></p>',
+          '<p class="q-val">points: <%=value%></p>',
+        '</div>',
       '</div>',
   ].join(''),
   loginForm: [
@@ -71,12 +73,12 @@ module.exports = {
     '</div>'
   ].join(''),
   gameContainerView: [
-    '<div class="question-view row"></div>',
-    '<div class="answer-view row"></div>',
+    '<div class="question-view col-md-8 vcenter"></div>',
+    '<div class="answer-view col-md-4 col-sm-12 col-xs-12 vcenter"></div>',
     '<div class="score-view row"></div>'
   ].join(''),
   answerView: [
-    '<input name="answer" type="text" placeholder="Answer">',
+    '<input class="col-md-12 col-sm-12 col-xs-12" name="answer" type="text" placeholder="Answer">',
     '<button name="submit-answer">Submit</button>'
   ].join('')
 };
