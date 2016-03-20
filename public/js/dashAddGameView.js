@@ -29,17 +29,13 @@ module.exports = Backbone.View.extend({
   createGame: function(event){
     event.preventDefault();
     var that = this;
-    var player2 = this.$el.find('input[name="player-1"]').val();
-    var player3 = this.$el.find('input[name="player-2"]').val();
-    var player4 = this.$el.find('input[name="player-3"]').val();
+    var playerNames = [JSON.parse(sessionStorage.getItem('user')).userName,];
+    playerNames.push(this.$el.find('input[name="player-1"]').val());
+    playerNames.push(this.$el.find('input[name="player-2"]').val());
+    playerNames.push(this.$el.find('input[name="player-3"]').val());
     that.model.set({
       id: null,
-      playerNames: [
-        JSON.parse(sessionStorage.getItem('user')).userName,
-        player2,
-        player3,
-        player4
-    ],
+      playerNames: playerNames,
       scoreList: null
     });
     that.$el.find('input').val('');
