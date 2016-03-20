@@ -167,9 +167,9 @@
 //						.sessionAttr("userName","d")
 //		);
 //		Score score = new Score();
-//		Boolean isCorrect = true;
+//		Boolean getIsCorrect = true;
 //		Integer pointValue = 5;
-//		score.setCorrect(isCorrect);
+//		score.setIsCorrect(getIsCorrect);
 //		score.setScore(pointValue);
 //		ObjectMapper mapper2 = new ObjectMapper();
 //		String json2 = mapper.writeValueAsString(score);
