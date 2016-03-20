@@ -103,10 +103,13 @@ public class IronTriviaController {
     @RequestMapping(path = "/game", method = RequestMethod.POST)
     public Game createGame(@RequestBody Game game) {
         game = games.save(game);
+        String s= null;
         List<String> playerNames = game.getPlayerNames();
         for (String player : playerNames) {
-            User user = users.findByUserName(player);//grabbing the player from database
-            scores.save(new Score(user, game));//then creating a score for that user connected to that game, this is also the user's link to the game
+            if (!player.isEmpty()) {
+                User user = users.findByUserName(player);//grabbing the player from database
+                scores.save(new Score(user, game));//then creating a score for that user connected to that game, this is also the user's link to the game
+            }
         }
         return game;
     }
@@ -182,7 +185,7 @@ public class IronTriviaController {
     //hit this route to check if everyone is ready
 
     @RequestMapping(path = "/allAnswered", method = RequestMethod.GET)
-    public boolean allReady(HttpSession session) {
+    public boolean allAnswered(HttpSession session) {
         boolean allAnswered;
         Game game = games.findOne((Integer) session.getAttribute("gameId"));
         User user = users.findByUserName((String) session.getAttribute("userName"));
