@@ -208,7 +208,7 @@ public class IronTriviaController {
         User user = users.findByUserName((String) session.getAttribute("userName"));
         game.setPlayerNames(getPlayers(game));
         Score score2 = scores.findByUserAndGame(user, game);
-        if (score.isCorrect()) {
+        if (score.getIsCorrect()) {
             score2.addToScore(score.getScore());//adds 5 to the user's score for this game if they had the correct answer
         }
         user.setHasAnswered(false);
