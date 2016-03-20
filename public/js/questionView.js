@@ -15,8 +15,10 @@ module.exports = Backbone.View.extend({
     this.model.destroy();
   },
   initialize: function(){
+    this.$el.html('');
     this.$el.append(this.render().el);
   },
+
   render: function(){
     var markup = this.template(this.model.toJSON()[0]);
     this.$el.append(markup);
