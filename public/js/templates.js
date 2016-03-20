@@ -74,11 +74,11 @@ module.exports = {
   ].join(''),
   gameContainerView: [
     '<div class="question-view col-md-8 vcenter"></div>',
-    '<div class="answer-view col-md-4 vcenter"></div>',
+    '<div class="answer-view col-md-4 col-sm-12 col-xs-12 vcenter"></div>',
     '<div class="score-view row"></div>'
   ].join(''),
   answerView: [
-    '<input class="col-md-12" name="answer" type="text" placeholder="Answer">',
+    '<input class="col-md-12 col-sm-12 col-xs-12" name="answer" type="text" placeholder="Answer">',
     '<button name="submit-answer">Submit</button>'
   ].join('')
 };
