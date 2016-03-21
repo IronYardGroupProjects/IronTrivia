@@ -227,8 +227,8 @@ module.exports = Backbone.View.extend({
     var logout = new LogoutModel();
     console.log(logout);
   	logout.save();
-    // Backbone.history.navigate("home", {trigger: true, replace: true});
-    // window.location='/'
+    // Backbone.history.navigate("", {trigger: true, replace: true});
+    window.location='/'
   },
   render: function(){
     var markup = this.template();
@@ -314,13 +314,13 @@ module.exports = Backbone.View.extend({
   events: {
     'click button[name="leave-game-button"]':'leaveGame'
   },
-  leaveGame: function(event){
-    event.preventDefault();
-    console.log("hasLeft game click")
-    var leavegame = new LeaveGameModel();
-    leavegame.save();
-    // Backbone.history.navigate("dashboard", {trigger: true, replace: true});
-  },
+  // leaveGame: function(event){
+  //   event.preventDefault();
+  //   console.log("hasLeft game click")
+  //   var leavegame = new LeaveGameModel();
+  //   leavegame.save();
+  //   // Backbone.history.navigate("dashboard", {trigger: true, replace: true});
+  // },
   render: function(){
     var markup = this.template();
     this.$el.html(markup);
@@ -723,8 +723,8 @@ module.exports = {
   gameContainerView: [
     '<div class="question-view col-md-8 vcenter"></div>',
     '<div class="answer-view col-md-4 col-sm-12 col-xs-12 vcenter"></div>',
-    '<div class="score-view row"></div>',
-    '<button name="leave-game-button">leave game</button>'
+    '<div class="score-view col-md-12"></div>',
+    // '<button name="leave-game-button">leave game</button>'
   ].join(''),
   answerView: [
     '<form>',

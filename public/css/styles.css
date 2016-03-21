@@ -80,6 +80,15 @@ input {
 .q-details-wrap {
   margin: 15px 0; }
 
+.score-view h3 {
+  color: white;
+  display: inline-block; }
+
+.score-view p {
+  display: inline-block;
+  margin: 10px;
+  color: #FFFFFF; }
+
 .login h1 {
   text-align: center;
   font-weight: 800;
