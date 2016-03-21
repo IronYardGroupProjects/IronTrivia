@@ -78,9 +78,22 @@ module.exports = {
     '<div class="score-view row"></div>'
   ].join(''),
   answerView: [
+<<<<<<< HEAD
     '<form>',
       '<input class="col-md-12 col-sm-12 col-xs-12" name="answer" type="text" placeholder="Answer">',
       '<button name="submit-answer">Submit</button>',
     '</form>'
+=======
+    '<input class="col-md-12 col-sm-12 col-xs-12" name="answer" type="text" placeholder="Answer">',
+    '<button name="submit-answer">Submit</button>'
+  ].join(''),
+  scoreView: [
+    '<div>',
+      '<% obj.scoreList.forEach(function(el){%>',
+      '<h3><%=el.user.userName%></h3>',
+      '<p><%=el.score%></p>',
+      '<% }) %>',
+    '</div>'
+>>>>>>> dcbdfd6d07e3550d767f528858ad1bf9332c17ff
   ].join('')
 };

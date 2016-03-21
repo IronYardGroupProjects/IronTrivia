@@ -8,17 +8,10 @@ module.exports = Backbone.View.extend({
   model: null,
   el: '.question-view',
   template: _.template(templates.question),
-  events: {
-
-  },
-  delete: function(){
-    this.model.destroy();
-  },
   initialize: function(){
     this.$el.html('');
     this.$el.append(this.render().el);
   },
-
   render: function(){
     var markup = this.template(this.model.toJSON()[0]);
     this.$el.append(markup);
