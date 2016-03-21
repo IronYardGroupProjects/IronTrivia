@@ -76,7 +76,8 @@ module.exports = {
   gameContainerView: [
     '<div class="question-view col-md-8 vcenter"></div>',
     '<div class="answer-view col-md-4 col-sm-12 col-xs-12 vcenter"></div>',
-    '<div class="score-view row"></div>'
+    '<div class="score-view row"></div>',
+    '<button name="leave-game-button">leave game</button>'
   ].join(''),
   answerView: [
     '<form>',
