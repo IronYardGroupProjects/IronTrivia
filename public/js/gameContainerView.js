@@ -11,6 +11,8 @@ var AnswerModel = require('./answerModel');
 var AnswerView = require('./answerView');
 var ScoreView = require('./scoreView');
 var ScoreModel = require('./scoreModel');
+var LeaveGameModel = require('./leaveGameModel')
+
 
 module.exports = Backbone.View.extend({
   activeUser: null,
@@ -30,6 +32,16 @@ module.exports = Backbone.View.extend({
     SModel.fetch().then((function(data){
       var SView = new ScoreView({model: SModel});
     }).bind(this));
+  },
+  events: {
+    'click button[name="leave-game-button"]':'leaveGame'
+  },
+  leaveGame: function(event){
+    event.preventDefault();
+    console.log("hasLeft game click")
+    var leavegame = new LeaveGameModel();
+    leavegame.save();
+    // Backbone.history.navigate("dashboard", {trigger: true, replace: true});
   },
   render: function(){
     var markup = this.template();
