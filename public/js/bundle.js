@@ -353,8 +353,9 @@ module.exports = Backbone.View.extend({
             method: 'POST',
             success: function(data){
               if(data){
-                Backbone.history.navigate("game", {trigger: true, replace: true});
+                console.log(that.model.toJSON());
                 sessionStorage.setItem('game', JSON.stringify(that.model.toJSON()));
+                Backbone.history.navigate("game", {trigger: true, replace: true});
                 window.clearInterval(interval);
               }
             }
