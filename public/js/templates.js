@@ -48,6 +48,7 @@ module.exports = {
   ].join(''),
   dashView: [
     '<h1>Games Available</h1>',
+    '<button name="logout-button">logout</button>',
     '<div class="join-game-container row"></div>',
     '<div class="add-game-container row"></div>'
   ].join(''),
@@ -75,11 +76,14 @@ module.exports = {
   gameContainerView: [
     '<div class="question-view col-md-8 vcenter"></div>',
     '<div class="answer-view col-md-4 col-sm-12 col-xs-12 vcenter"></div>',
-    '<div class="score-view row"></div>'
+    '<div class="score-view row"></div>',
+    '<button name="leave-game-button">leave game</button>'
   ].join(''),
   answerView: [
-    '<input class="col-md-12 col-sm-12 col-xs-12" name="answer" type="text" placeholder="Answer">',
-    '<button name="submit-answer">Submit</button>'
+    '<form>',
+      '<input class="col-md-12 col-sm-12 col-xs-12" name="answer" type="text" placeholder="Answer">',
+      '<button name="submit-answer">Submit</button>',
+    '</form>'
   ].join(''),
   scoreView: [
     '<div>',

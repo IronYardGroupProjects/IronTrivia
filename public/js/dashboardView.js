@@ -7,6 +7,8 @@ var DashboardAddGameFormModel = require('./dashAddGameFormModel');
 var UserModel = require('./userModel');
 var GameCollection = require('./gameCollection');
 var GameCollectionView = require('./gameCollectionView');
+var LogoutModel = require('./logoutModel')
+var Router = require('./router');
 
 module.exports = Backbone.View.extend({
   collection: null,
@@ -21,6 +23,18 @@ module.exports = Backbone.View.extend({
       var GameCollView = new GameCollectionView({collection: GameCol,model: user})
       var DashAddFormView = new DashboardAddGameView({collection: GameCol});
     }));
+  },
+  events:{
+    "click button[name= 'logout-button']" : "logout",
+  },
+  logout: function() {
+    event.preventDefault();
+    console.log("logout");
+    var logout = new LogoutModel();
+    console.log(logout);
+  	logout.save();
+    // Backbone.history.navigate("home", {trigger: true, replace: true});
+    // window.location='/'
   },
   render: function(){
     var markup = this.template();
