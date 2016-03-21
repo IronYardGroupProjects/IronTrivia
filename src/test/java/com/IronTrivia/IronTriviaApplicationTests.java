@@ -156,7 +156,6 @@ public class IronTriviaApplicationTests {
 		);
 		Assert.assertTrue(scores.findByUserAndGame(users.findByUserName("c"), games.findOne(1)).getScore() == 5);
 		Assert.assertTrue(!users.findByUserName("c").getHasAnswered());
-		Assert.assertTrue(!users.findByUserName("c").getIsReady());
 	}
     @Test
     public void HupdateScorePut() throws Exception {
@@ -181,7 +180,6 @@ public class IronTriviaApplicationTests {
         * from the database as they have been updated during these routes*/
         Assert.assertTrue(scores.findByUserAndGame(users.findByUserName("c"), games.findOne(1)).getScore() == 15);
         Assert.assertTrue(!users.findByUserName("c").getHasAnswered());//ask for user from db again as the user has been updated in the route
-        Assert.assertTrue(!users.findByUserName("c").getIsReady());
     }
     @Test
     public void IdeleteGame() throws Exception {
