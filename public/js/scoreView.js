@@ -1,19 +1,20 @@
 var Backbone = require('backbone');
 var _ = require('underscore');
-var $ = require('jquery');
 var templates = require('./templates');
-var QuestionModel = require('./questionModel');
+var ScoreModel = require('./scoreModel');
+var $ = require('jquery');
 
 module.exports = Backbone.View.extend({
   model: null,
-  el: '.question-view',
-  template: _.template(templates.question),
+  el: '.score-view',
+  template: _.template(templates.scoreView),
   initialize: function(){
-    this.$el.html('');
+    console.log(this.model.toJSON());
     this.$el.append(this.render().el);
   },
   render: function(){
-    var markup = this.template(this.model.toJSON()[0]);
+    this.$el.html('');
+    var markup = this.template(this.model.toJSON());
     this.$el.append(markup);
     return this;
   },
