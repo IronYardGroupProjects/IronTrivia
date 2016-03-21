@@ -15,13 +15,23 @@
     }
 }
 .question-view {
-    background: white;
-    margin-bottom: 20px;
+  background: white;
+  margin-bottom: 20px;
 }
 .question-view p {
-    margin: 0;
-    color: #ACBABB;
+  margin: 0;
+  color: #ACBABB;
 }
 .q-details-wrap {
-    margin: 15px 0;
+  margin: 15px 0;
+}
+.score-view h3 {
+  color: white;
+  display: inline-block;
+}
+
+.score-view p {
+  display: inline-block;
+  margin: 10px;
+  color: #FFFFFF;
 }

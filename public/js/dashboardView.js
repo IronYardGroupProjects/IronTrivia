@@ -33,8 +33,8 @@ module.exports = Backbone.View.extend({
     var logout = new LogoutModel();
     console.log(logout);
   	logout.save();
-    // Backbone.history.navigate("home", {trigger: true, replace: true});
-    // window.location='/'
+    // Backbone.history.navigate("", {trigger: true, replace: true});
+    window.location='/'
   },
   render: function(){
     var markup = this.template();
