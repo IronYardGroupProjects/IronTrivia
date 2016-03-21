@@ -9,6 +9,8 @@ var QuestionModel = require('./questionModel');
 var QuestionView = require('./questionView');
 var AnswerModel = require('./answerModel');
 var AnswerView = require('./answerView');
+var ScoreView = require('./scoreView');
+var ScoreModel = require('./scoreModel');
 
 module.exports = Backbone.View.extend({
   activeUser: null,
@@ -23,6 +25,11 @@ module.exports = Backbone.View.extend({
       sessionStorage.setItem('question', JSON.stringify(data));
     }).bind(this));
     var AView = new AnswerView();
+    var SModel = new ScoreModel();
+    SModel.updateURL(JSON.parse(sessionStorage.getItem('game')).id);
+    SModel.fetch().then((function(data){
+      var SView = new ScoreView({model: SModel});
+    }).bind(this));
   },
   render: function(){
     var markup = this.template();

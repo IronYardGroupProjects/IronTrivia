@@ -5,6 +5,8 @@ var templates = require('./templates');
 var AnswerModel = require('./answerModel');
 var QuestionModel = require('./questionModel');
 var QuestionView = require('./questionView');
+var ScoreModel = require('./scoreModel');
+var ScoreView = require('./scoreView');
 
 module.exports = Backbone.View.extend({
   model: null,
@@ -28,6 +30,11 @@ module.exports = Backbone.View.extend({
         var QView = new QuestionView({model: QModel});
         sessionStorage.setItem('question', JSON.stringify(data));
       }).bind(this));
+      var SModel = new ScoreModel();
+      SModel.updateURL(JSON.parse(sessionStorage.getItem('game')).id);
+      SModel.fetch().then((function(data){
+        var SView = new ScoreView({model: SModel});
+      }).bind(this));
     } else {
       this.model.set({
         isCorrect: false
@@ -37,6 +44,11 @@ module.exports = Backbone.View.extend({
       QModel.fetch().then((function(data){
         var QView = new QuestionView({model: QModel});
         sessionStorage.setItem('question', JSON.stringify(data));
+      }).bind(this));
+      var SModel = new ScoreModel();
+      SModel.updateURL(JSON.parse(sessionStorage.getItem('game')).id);
+      SModel.fetch().then((function(data){
+        var SView = new ScoreView({model: SModel});
       }).bind(this));
     }
     this.$el.find('input[name="answer"]').val('');
