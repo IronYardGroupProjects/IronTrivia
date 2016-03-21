@@ -45,7 +45,7 @@ module.exports = Backbone.View.extend({
 
 });
 
-},{"./templates":21,"./userModel":24,"backbone":25,"jquery":26,"underscore":27}],2:[function(require,module,exports){
+},{"./templates":22,"./userModel":25,"backbone":26,"jquery":27,"underscore":28}],2:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
@@ -57,7 +57,7 @@ module.exports = Backbone.Model.extend({
 
 //score obj score: , isCorrect: t/f 
 
-},{"backbone":25}],3:[function(require,module,exports){
+},{"backbone":26}],3:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -125,7 +125,7 @@ module.exports = Backbone.View.extend({
 
 });
 
-},{"./answerModel":2,"./questionModel":16,"./questionView":17,"./scoreModel":19,"./scoreView":20,"./templates":21,"backbone":25,"jquery":26,"underscore":27}],4:[function(require,module,exports){
+},{"./answerModel":2,"./questionModel":17,"./questionView":18,"./scoreModel":20,"./scoreView":21,"./templates":22,"backbone":26,"jquery":27,"underscore":28}],4:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
@@ -136,7 +136,7 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"backbone":25}],5:[function(require,module,exports){
+},{"backbone":26}],5:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var tmpl= require('./templates');
@@ -191,7 +191,7 @@ module.exports = Backbone.View.extend({
     }
 });
 
-},{"./gameModel":10,"./templates":21,"./userModel":24,"backbone":25,"jquery":26,"underscore":27}],6:[function(require,module,exports){
+},{"./gameModel":10,"./templates":22,"./userModel":25,"backbone":26,"jquery":27,"underscore":28}],6:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var template = require('./templates');
@@ -201,6 +201,7 @@ var DashboardAddGameFormModel = require('./dashAddGameFormModel');
 var UserModel = require('./userModel');
 var GameCollection = require('./gameCollection');
 var GameCollectionView = require('./gameCollectionView');
+var LogoutModel = require('./logoutModel')
 
 module.exports = Backbone.View.extend({
   collection: null,
@@ -216,6 +217,17 @@ module.exports = Backbone.View.extend({
       var DashAddFormView = new DashboardAddGameView({collection: GameCol});
     }));
   },
+  events:{
+    "click button[name= 'logout-button']" : "logout",
+  },
+  logout: function() {
+    event.preventDefault();
+    console.log("logout");
+    var logout = new LogoutModel();
+    console.log(logout);
+  	logout.save();
+    Backbone.history.navigate("", {trigger: true});
+  },
   render: function(){
     var markup = this.template();
     this.$el.html(markup);
@@ -224,7 +236,7 @@ module.exports = Backbone.View.extend({
 
 });
 
-},{"./dashAddGameFormModel":4,"./dashAddGameView":5,"./gameCollection":7,"./gameCollectionView":8,"./templates":21,"./userModel":24,"backbone":25,"jquery":26,"underscore":27}],7:[function(require,module,exports){
+},{"./dashAddGameFormModel":4,"./dashAddGameView":5,"./gameCollection":7,"./gameCollectionView":8,"./logoutModel":15,"./templates":22,"./userModel":25,"backbone":26,"jquery":27,"underscore":28}],7:[function(require,module,exports){
 var Backbone = require('backbone');
 var GameModel = require('./gameModel');
 
@@ -234,7 +246,7 @@ module.exports = Backbone.Collection.extend({
   initialize: function(){}
 })
 
-},{"./gameModel":10,"backbone":25}],8:[function(require,module,exports){
+},{"./gameModel":10,"backbone":26}],8:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -261,7 +273,7 @@ module.exports = Backbone.View.extend({
 
 });
 
-},{"./gameModel":10,"./gameView":11,"./templates":21,"backbone":25,"jquery":26,"underscore":27}],9:[function(require,module,exports){
+},{"./gameModel":10,"./gameView":11,"./templates":22,"backbone":26,"jquery":27,"underscore":28}],9:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var template = require('./templates');
@@ -303,7 +315,7 @@ module.exports = Backbone.View.extend({
 
 });
 
-},{"./answerModel":2,"./answerView":3,"./gameCollection":7,"./gameCollectionView":8,"./questionModel":16,"./questionView":17,"./scoreModel":19,"./scoreView":20,"./templates":21,"./userModel":24,"backbone":25,"jquery":26,"underscore":27}],10:[function(require,module,exports){
+},{"./answerModel":2,"./answerView":3,"./gameCollection":7,"./gameCollectionView":8,"./questionModel":17,"./questionView":18,"./scoreModel":20,"./scoreView":21,"./templates":22,"./userModel":25,"backbone":26,"jquery":27,"underscore":28}],10:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
@@ -315,7 +327,7 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"backbone":25}],11:[function(require,module,exports){
+},{"backbone":26}],11:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var templates = require('./templates');
@@ -372,7 +384,7 @@ module.exports = Backbone.View.extend({
 
 });
 
-},{"./gameModel":10,"./templates":21,"./userModel":24,"backbone":25,"jquery":26,"underscore":27}],12:[function(require,module,exports){
+},{"./gameModel":10,"./templates":22,"./userModel":25,"backbone":26,"jquery":27,"underscore":28}],12:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var tmpl= require('./templates');
@@ -398,7 +410,7 @@ module.exports = Backbone.View.extend({
 
 });
 
-},{"./addUserView":1,"./loginModel":13,"./loginView":14,"./templates":21,"backbone":25,"jquery":26,"underscore":27}],13:[function(require,module,exports){
+},{"./addUserView":1,"./loginModel":13,"./loginView":14,"./templates":22,"backbone":26,"jquery":27,"underscore":28}],13:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
@@ -413,7 +425,7 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"backbone":25}],14:[function(require,module,exports){
+},{"backbone":26}],14:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var tmpl= require('./templates');
@@ -458,7 +470,25 @@ module.exports = Backbone.View.extend({
 
 });
 
-},{"./loginModel":13,"./router":18,"./templates":21,"./userModel":24,"backbone":25,"jquery":26,"underscore":27}],15:[function(require,module,exports){
+},{"./loginModel":13,"./router":19,"./templates":22,"./userModel":25,"backbone":26,"jquery":27,"underscore":28}],15:[function(require,module,exports){
+var Backbone = require('backbone');
+
+module.exports = Backbone.Model.extend({
+  urlRoot: '/logout',
+  id:null,
+  initialize: function () {
+    console.log('logged out');
+  },
+  // updateURL: function(loggedOut){
+  //   if(loggedOut){
+  //     this.urlRoot = this.urlRoot + '/';
+  //   } else {
+  //     this.urlRoot = '/';
+  //   }
+  // }
+});
+
+},{"backbone":26}],16:[function(require,module,exports){
 var Backbone = require('backbone');
 var $ = require('jquery');
 var Router = require('./router');
@@ -468,7 +498,7 @@ $(document).ready(function () {
   Backbone.history.start({pushstate: true});
 });
 
-},{"./router":18,"backbone":25,"jquery":26}],16:[function(require,module,exports){
+},{"./router":19,"backbone":26,"jquery":27}],17:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
@@ -477,7 +507,7 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"backbone":25}],17:[function(require,module,exports){
+},{"backbone":26}],18:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var $ = require('jquery');
@@ -500,7 +530,7 @@ module.exports = Backbone.View.extend({
 
 });
 
-},{"./questionModel":16,"./templates":21,"backbone":25,"jquery":26,"underscore":27}],18:[function(require,module,exports){
+},{"./questionModel":17,"./templates":22,"backbone":26,"jquery":27,"underscore":28}],19:[function(require,module,exports){
 var Backbone = require('backbone');
 var UserCollection = require('./userCollection');
 var UserCollectionView = require('./userCollectionView');
@@ -547,7 +577,7 @@ module.exports = Backbone.Router.extend({
   }
 });
 
-},{"./addUserView":1,"./dashboardView":6,"./gameCollection":7,"./gameCollectionView":8,"./gameContainerView":9,"./loginContainerView":12,"./loginModel":13,"./loginView":14,"./questionModel":16,"./questionView":17,"./userCollection":22,"./userCollectionView":23,"./userModel":24,"backbone":25}],19:[function(require,module,exports){
+},{"./addUserView":1,"./dashboardView":6,"./gameCollection":7,"./gameCollectionView":8,"./gameContainerView":9,"./loginContainerView":12,"./loginModel":13,"./loginView":14,"./questionModel":17,"./questionView":18,"./userCollection":23,"./userCollectionView":24,"./userModel":25,"backbone":26}],20:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports =Backbone.Model.extend({
@@ -565,7 +595,7 @@ module.exports =Backbone.Model.extend({
   }
 });
 
-},{"backbone":25}],20:[function(require,module,exports){
+},{"backbone":26}],21:[function(require,module,exports){
 var Backbone = require('backbone');
 var _ = require('underscore');
 var templates = require('./templates');
@@ -589,7 +619,7 @@ module.exports = Backbone.View.extend({
 
 });
 
-},{"./scoreModel":19,"./templates":21,"backbone":25,"jquery":26,"underscore":27}],21:[function(require,module,exports){
+},{"./scoreModel":20,"./templates":22,"backbone":26,"jquery":27,"underscore":28}],22:[function(require,module,exports){
 var _ = require('underscore');
 module.exports = {
   header:[
@@ -640,6 +670,7 @@ module.exports = {
   ].join(''),
   dashView: [
     '<h1>Games Available</h1>',
+    '<button name="logout-button">logout</button>',
     '<div class="join-game-container row"></div>',
     '<div class="add-game-container row"></div>'
   ].join(''),
@@ -670,8 +701,10 @@ module.exports = {
     '<div class="score-view row"></div>'
   ].join(''),
   answerView: [
-    '<input class="col-md-12 col-sm-12 col-xs-12" name="answer" type="text" placeholder="Answer">',
-    '<button name="submit-answer">Submit</button>'
+    '<form>',
+      '<input class="col-md-12 col-sm-12 col-xs-12" name="answer" type="text" placeholder="Answer">',
+      '<button name="submit-answer">Submit</button>',
+    '</form>'
   ].join(''),
   scoreView: [
     '<div>',
@@ -683,11 +716,11 @@ module.exports = {
   ].join('')
 };
 
-},{"underscore":27}],22:[function(require,module,exports){
+},{"underscore":28}],23:[function(require,module,exports){
 
-},{}],23:[function(require,module,exports){
-arguments[4][22][0].apply(exports,arguments)
-},{"dup":22}],24:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
+arguments[4][23][0].apply(exports,arguments)
+},{"dup":23}],25:[function(require,module,exports){
 var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
@@ -705,7 +738,7 @@ module.exports = Backbone.Model.extend({
 
 });
 
-},{"backbone":25}],25:[function(require,module,exports){
+},{"backbone":26}],26:[function(require,module,exports){
 (function (global){
 //     Backbone.js 1.3.2
 
@@ -2629,7 +2662,7 @@ module.exports = Backbone.Model.extend({
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":26,"underscore":27}],26:[function(require,module,exports){
+},{"jquery":27,"underscore":28}],27:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.2
  * http://jquery.com/
@@ -12473,7 +12506,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -14023,4 +14056,4 @@ return jQuery;
   }
 }.call(this));
 
-},{}]},{},[15]);
+},{}]},{},[16]);
