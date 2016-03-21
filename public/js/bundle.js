@@ -224,8 +224,9 @@ module.exports = Backbone.View.extend({
     event.preventDefault();
     console.log("logout");
     var logout = new LogoutModel();
-	logout.save();
-    Backbone.history.navigate("/", {trigger: true, replace: true});
+    console.log(logout);
+  	logout.save();
+    Backbone.history.navigate("", {trigger: true});
   },
   render: function(){
     var markup = this.template();
@@ -471,10 +472,20 @@ module.exports = Backbone.View.extend({
 
 },{"./loginModel":13,"./router":19,"./templates":22,"./userModel":25,"backbone":26,"jquery":27,"underscore":28}],15:[function(require,module,exports){
 var Backbone = require('backbone');
+
 module.exports = Backbone.Model.extend({
   urlRoot: '/logout',
+  id:null,
   initialize: function () {
-  }
+    console.log('logged out');
+  },
+  // updateURL: function(loggedOut){
+  //   if(loggedOut){
+  //     this.urlRoot = this.urlRoot + '/';
+  //   } else {
+  //     this.urlRoot = '/';
+  //   }
+  // }
 });
 
 },{"backbone":26}],16:[function(require,module,exports){

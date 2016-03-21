@@ -30,8 +30,9 @@ module.exports = Backbone.View.extend({
     event.preventDefault();
     console.log("logout");
     var logout = new LogoutModel();
-	logout.save();
-    Backbone.history.navigate("/", {trigger: true, replace: true});
+    console.log(logout);
+  	logout.save();
+    Backbone.history.navigate("", {trigger: true});
   },
   render: function(){
     var markup = this.template();
